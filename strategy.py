@@ -8,7 +8,7 @@ from itertools import product
 strategy_list = ["A", "B"]
 cartesian_product = []
 length = 0
-n = 8
+n = 4
 
 for ele in range(n-1): #19
     if ele==0:
@@ -19,7 +19,7 @@ for ele in range(n-1): #19
 cartesian_list = list(cartesian_product)
 length = len(cartesian_list)
 
-print("Number of Players: {}\nStrategy Set: {}\nTotal Number of Strategy Profiles: {}".format(int(20),set(strategy_list),length))
+print("Number of Players: {}\nStrategy Set: {}\nTotal Number of Strategy Profiles: {}".format(int(n),set(strategy_list),length))
 
 
 #Part 2: Data processing
