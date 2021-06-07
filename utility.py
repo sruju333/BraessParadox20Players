@@ -1,52 +1,47 @@
 '''
-Compute Utilities of all 20 players
+Calculate Utility/Outcome corresponding to all Strategy Profiles
 '''
-#Part 1: Compute all possible strategy profiles for 20 players and store it in list
-import re
-from itertools import product
+from strategy import l
 
-strategy_list = ["A", "B"]
-cartesian_product = []
-length = 0
-
-for ele in range(4): #19
-    if ele==0:
-        cartesian_product = product(strategy_list,strategy_list)
-    else:
-        cartesian_product = product(strategy_list, cartesian_product)
-
-cartesian_list = list(cartesian_product)
-length = len(cartesian_list)
-
-print("Number of Players: {}\nStrategy Set: {}\nTotal Number of Strategy Profiles: {}".format(int(20),set(strategy_list),length))
-
-
-#Part 2: Data processing
-x  = re.sub('[()]', '', str(cartesian_list))
-x = x.replace("[","")
-x = x.replace("]","")
-
-L = []
-for ele in x:
-    if (ele=='A' or ele=='B'):
-        L.append(ele)
-
-count = 0
-newL = []
-l = []
-for ele in L:
-    count += 1
-    newL.append(ele)
-    if count%5==0: #20
-        l.append(newL)
-        newL = []
-
-
-#Part 3: Writing all strategy profile to a text file
-file = open("Braess20Players.txt", "w")
+#Part 1: Calculating utility
+u = []
+sub = []
+nA = 0
+nB = 0
 
 for ele in l:
-    file.write(str(ele))
+    for element in ele:
+        if element=='A':
+            nA += 1
+        elif element=='B':
+            nB +=1
+        else:
+            pass
+
+    #Calculating utility for each strategy profile
+    for element in ele:
+        if element=='A':
+            payoff = (-25 - (nA/50))
+            sub.append(payoff)
+        elif element=='B':
+            payoff = (-25 -(nB/50))
+            sub.append(payoff)
+
+    u.append(sub)
+    sub = []
+    nA, nB = 0, 0
+
+
+#Part 2: Writing all strategy profile and utilities to a text file
+output = []
+
+for (item1, item2) in zip(l, u):
+    output.append(str(item1)+ " - " +str(item2))
+
+file = open("Braess20Players.txt", "w")
+
+for op in output:
+    file.write(str(op))
     file.write("\n")
 
 file.close()
