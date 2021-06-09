@@ -5,10 +5,13 @@ from strategy import l, n, length
 from utility import u
 import copy
 
+SDSeq = []
+
 player = []
 res = []
 fsds = []
 
+#Part 1: Calculating Strongly Dominant Strategies of all Players
 def checksublist(plist,p):
     for ele in plist:
         sds, sdu = [], []
@@ -23,8 +26,10 @@ def checksublist(plist,p):
 
     if (len(fsds)==(length/2)):
         if list(set(fsds))==list('A'):
+            SDSeq.append('A')
             print("Strongly Dominant Strategy of Player {} is A".format(p+1))
         elif list(set(fsds))==list('B'):
+            SDSeq.append('B')
             print("Strongly Dominant Strategy of Player {} is B".format(p+1))
         else:
             print("Players {} has NO Strongly Dominant Strategy".format(p+1))
@@ -61,3 +66,12 @@ for k in range(n):
     player = []
     res = []
     fsds = []
+
+#Part 2: Printing Strongly Dominant Strategy Equilibrium, if it exists
+if not SDSeq:
+    print("NO Strongly Dominant Strategy Equilibrium")
+else:
+    if len(SDSeq)==n:
+        print("Strongly Dominant Strategy Equilibrium:", SDSeq)
+    else:
+        print("NO Strongly Dominant Strategy Equilibrium")
