@@ -1,54 +1,48 @@
 '''
 Compute all Strongly Dominant Strategies and Equilibrium
 '''
-from strategy import l, n
+from strategy import l, n, length
 from utility import u
 import copy
 
-copyi, copyj = [], []
-comparei, comparej = [], []
-appi, appj = [], []
-val = 0
+player = []
+res = []
+fsds = []
 
-def check(list1, list2,chk):
-    for i, j in zip(l,u):
-        res = checksublist(i,list1)
-        if res:
-            comparei = copy.deepcopy(i)
-            comparei = [z for z in comparei if not z in list1 or list1.remove(z)]
-            appi.append(comparei[0])
-            comparej = copy.deepcopy(j)
-            comparej = [z for z in comparej if not z in list2 or list2.remove(z)]
-            appj.append(comparej[0])
+def checksublist(plist,p):
+    for ele in plist:
+        sds, sdu = [], []
+        for i,j in zip(l,u):
+            L = copy.deepcopy(ele)
+            L.insert(p,i[p])
+            if L==i:
+                sds.append(i[p])
+                sdu.append(j[p])
 
-    val = compare(appi, appj)
+        compare(sds,sdu)
 
-    if val==0:
-        print("Player {} has NO Strongly Dominant Strategy".format(chk+1))
+    if (len(fsds)==(length/2)):
+        if list(set(fsds))==list('A'):
+            print("Strongly Dominant Strategy of Player {} is A".format(p+1))
+        elif list(set(fsds))==list('B'):
+            print("Strongly Dominant Strategy of Player {} is B".format(p+1))
+        else:
+            print("Players {} has NO Strongly Dominant Strategy".format(p+1))
     else:
-        print("Strongly Dominant Strategy of Player {} is {}".format(chk+1, val))
-
-def checksublist(lis1, lis2):
-    i,j = 0,0
-    while i < len(lis1) and j < len(lis2):
-        if lis1[i] == lis2[j]:
-            j += 1
-        i += 1
-
-    has_as_subset = (j == len(lis2))
-    return has_as_subset
+        print("Players {} has NO Strongly Dominant Strategy".format(p+1))
 
 
-def compare(l1, l2):
-    if l2[0][0]>l2[1][0]:
-        return l1[0][0]
-    elif l2[1][0]>l2[0][0]:
-        return l1[1][0]
+def compare(slist, ulist):
+    if ulist[0]>ulist[1]:
+        fsds.append(slist[0])
+    elif ulist[1]>ulist[0]:
+        fsds.append(slist[1])
     else:
         pass
 
 
 for k in range(n):
+    chk = 0
     for i, j in zip(l, u):
         for chk in range(n):
             if chk==k:
@@ -56,4 +50,14 @@ for k in range(n):
                 copyi.remove(i[chk])
                 copyj = copy.deepcopy(j)
                 copyj.remove(j[chk])
-                check(copyi,copyj,chk)
+
+        player.append(tuple(copyi))
+
+    player = list(set(player))
+    res = [list(ele) for ele in player]
+
+    checksublist(res,k)
+
+    player = []
+    res = []
+    fsds = []
