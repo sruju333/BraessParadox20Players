@@ -67,6 +67,7 @@ for k in range(n):
     res = []
     fsds = []
 
+
 #Part 2: Printing Strongly Dominant Strategy Equilibrium, if it exists
 if not SDSeq:
     print("NO Strongly Dominant Strategy Equilibrium")
