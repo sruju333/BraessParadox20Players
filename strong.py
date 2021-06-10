@@ -32,9 +32,9 @@ def checksublist(plist,p):
             SDSeq.append('B')
             print("Strongly Dominant Strategy of Player {} is B".format(p+1))
         else:
-            print("Players {} has NO Strongly Dominant Strategy".format(p+1))
+            print("Player {} has NO Strongly Dominant Strategy".format(p+1))
     else:
-        print("Players {} has NO Strongly Dominant Strategy".format(p+1))
+        print("Player {} has NO Strongly Dominant Strategy".format(p+1))
 
 
 def compare(slist, ulist):
