@@ -4,6 +4,7 @@ Compute all Weakly Dominant Strategies and Equilibrium
 from strategy import l, n, length
 from utility import u
 import copy
+import itertools
 
 WDSeq = []
 
@@ -87,9 +88,9 @@ for k in range(n):
 
 
 #Part 2: Printing Weakly Dominant Strategy Equilibrium, if it exists
-EQ = []
 if not WDSeq:
     print("NO Weakly Dominant Strategy Equilibrium")
 else:
     print("Weakly Dominant Strategy Equilibria: ")
-    
+    all_possibility = list(itertools.product(*WDSeq))
+    print(all_possibility)
