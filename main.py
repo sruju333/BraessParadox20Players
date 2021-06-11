@@ -8,3 +8,4 @@ import strong
 import weak
 import veryweak
 import nash
+import maxmin

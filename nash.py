@@ -75,4 +75,8 @@ else:
         if not EQ:
             print("NO Pure Strategy Nash Equilibrium")
         else:
-            print("All Pure Strategy Nash Equilibria:", EQ)
+            print("All Pure Strategy Nash Equilibria:")
+            NASHEQ = []
+            for ele in EQ:
+                NASHEQ.append(tuple(ele))
+            print(set(NASHEQ))    
