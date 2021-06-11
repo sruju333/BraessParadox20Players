@@ -62,7 +62,6 @@ for k in range(n):
 nashEq = np.array(nashEq)
 nashEq = np.transpose(nashEq)
 EQ = []
-print(nashEq)
 
 if nashEq.size==0:
     print("NO Pure Strategy Nash Equilibrium")
