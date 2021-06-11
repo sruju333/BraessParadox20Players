@@ -9,8 +9,9 @@ player = []
 res = []
 minu = 0
 _maxu, _maxs = [], []
+M = []
 
-#Part 1: Calculating Best Response Correspondence of all Players
+#Part 1: Calculating Minmax Value and Strategy of all Players
 def checksublist(plist,p):
     for ele in plist:
         strat, uti = [], []
@@ -29,9 +30,9 @@ def checksublist(plist,p):
         if i==minu:
             mins.append(j)
 
-    #Printing maxmin value and strategy of each player
     print("Player {} Minmax Value: {}".format(p+1,minu))
     print("Player {} Minmax Strategy: {}".format(p+1,mins))
+    M.append(mins)
 
 
 def compare(slist, ulist):

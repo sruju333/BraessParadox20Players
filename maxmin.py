@@ -10,7 +10,7 @@ res = []
 _minu, _mins = [], []
 maxu = 0
 
-#Part 1: Calculating Best Response Correspondence of all Players
+#Part 1: Calculating Maxmin Value and Strategy of all Players
 def checksublist(plist,p):
     for ele in plist:
         strat, uti = [], []
