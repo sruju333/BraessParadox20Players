@@ -8,7 +8,7 @@ from itertools import product
 strategy_list = ["A", "B"]
 cartesian_product = []
 length = 0
-n = 10
+n = 15
 
 for ele in range(n-1): #19
     if ele==0:
