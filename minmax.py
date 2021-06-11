@@ -9,7 +9,6 @@ player = []
 res = []
 minu = 0
 _maxu, _maxs = [], []
-M = []
 
 #Part 1: Calculating Minmax Value and Strategy of all Players
 def checksublist(plist,p):
@@ -31,8 +30,7 @@ def checksublist(plist,p):
             mins.append(j)
 
     print("Player {} Minmax Value: {}".format(p+1,minu))
-    print("Player {} Minmax Strategy: {}".format(p+1,mins))
-    M.append(mins)
+    print("Player {} Minmax Strategy: {}".format(p+1,set(mins)))
 
 
 def compare(slist, ulist):
