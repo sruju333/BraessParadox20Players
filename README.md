@@ -1,12 +1,10 @@
 # Braess Paradox Game for 20 Players
 A program to compute the utility for all 20 players, all dominant strategies and equilibrium, nash equilibrium and minmax maxmin values and strategies for Braess Paradox Game. 
 
-_Original Problem Statement_
+# _Original Problem Statement_\
 Game Theory and Mechanism Design Book by Y Narahari\
 Page 90, Problem (22) Programming Assignment
 
-Problem Statement
------------------
 Given a finite n-player strategic form game, develop a program that outputs:
 * all strongly dominant strategies;
 * all weakly dominant strategies;
